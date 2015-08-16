@@ -23,4 +23,6 @@
 #define WCLog(...) nil
 #endif
 
+extern NSString* const KeyUser;
+extern NSString* const KeyPwd;
 #endif

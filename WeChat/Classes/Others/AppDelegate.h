@@ -8,10 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, XMPPResultType)
+{
+    XMPPResultTypeSuccess,
+    XMPPResultTypeFailure,
+    XMPPResultTypeNetError
+};
+
+typedef void (^XMPPResultBlock)(XMPPResultType type);
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+//登录
+- (void)xmppLogin:(XMPPResultBlock)block;
+
+//注销登录
+- (void)xmpplogout;
 
 @end
 

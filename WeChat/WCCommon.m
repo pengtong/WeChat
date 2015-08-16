@@ -8,3 +8,6 @@
 
 #import "WCCommon.h"
 
+NSString* const KeyUser = @"user";
+
+NSString* const KeyPwd = @"pwd";

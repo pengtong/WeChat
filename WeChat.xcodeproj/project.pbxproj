@@ -167,6 +167,8 @@
 		CE68110D1B8073ED001EFB8E /* NSDate+HH.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6811061B8073EC001EFB8E /* NSDate+HH.m */; };
 		CE6811101B80747A001EFB8E /* WCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68110F1B80747A001EFB8E /* WCCommon.m */; };
 		CE68111D1B808FE2001EFB8E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */; };
+		CE68111F1B809CCB001EFB8E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE68111E1B809CCB001EFB8E /* Login.storyboard */; };
+		CE9C12F21B80C4B4003E336D /* WCOtherLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C12F11B80C4B4003E336D /* WCOtherLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,6 +512,9 @@
 		CE68110F1B80747A001EFB8E /* WCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCCommon.m; sourceTree = "<group>"; };
 		CE68111B1B808FE2001EFB8E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		CE68111E1B809CCB001EFB8E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CE9C12F01B80C4B4003E336D /* WCOtherLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCOtherLoginViewController.h; sourceTree = "<group>"; };
+		CE9C12F11B80C4B4003E336D /* WCOtherLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCOtherLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +612,7 @@
 		CE680D791B806DAD001EFB8E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CE9C12F31B80CB17003E336D /* Home */,
 				CE680D7F1B806E86001EFB8E /* Login */,
 				CE680D801B806E86001EFB8E /* Main */,
 				CE680D7B1B806E35001EFB8E /* Others */,
@@ -626,6 +632,7 @@
 		CE680D7F1B806E86001EFB8E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CE68111E1B809CCB001EFB8E /* Login.storyboard */,
 				CE680D841B806EF6001EFB8E /* Controller */,
 				CE680D851B806EF6001EFB8E /* Model */,
 				CE680D861B806EF6001EFB8E /* View */,
@@ -648,6 +655,8 @@
 		CE680D841B806EF6001EFB8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CE9C12F01B80C4B4003E336D /* WCOtherLoginViewController.h */,
+				CE9C12F11B80C4B4003E336D /* WCOtherLoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -669,7 +678,6 @@
 		CE680D871B806F0F001EFB8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE680D5D1B806D43001EFB8E /* Main.storyboard */,
 				CE680D881B806F0F001EFB8E /* ViewController.h */,
 				CE680D891B806F0F001EFB8E /* ViewController.m */,
 			);
@@ -1598,6 +1606,38 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		CE9C12F31B80CB17003E336D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE680D5D1B806D43001EFB8E /* Main.storyboard */,
+				CE9C12F41B80CB17003E336D /* Controller */,
+				CE9C12F51B80CB17003E336D /* Model */,
+				CE9C12F61B80CB17003E336D /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CE9C12F41B80CB17003E336D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE9C12F51B80CB17003E336D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE9C12F61B80CB17003E336D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E6D1CA576CF76887F23AC1B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1692,6 +1732,7 @@
 				CE680D5F1B806D43001EFB8E /* Main.storyboard in Resources */,
 				CE680DC21B80706C001EFB8E /* README.txt in Resources */,
 				CE680D611B806D43001EFB8E /* Images.xcassets in Resources */,
+				CE68111F1B809CCB001EFB8E /* Login.storyboard in Resources */,
 				CE680DC71B80706C001EFB8E /* build-libidn.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1770,6 +1811,7 @@
 				CE68110C1B8073ED001EFB8E /* UIBarButtonItem+HT.m in Sources */,
 				CE680E1B1B8071DA001EFB8E /* NSNumber+XMPP.m in Sources */,
 				CE6810991B80726A001EFB8E /* XMPPGoogleSharedStatus.m in Sources */,
+				CE9C12F21B80C4B4003E336D /* WCOtherLoginViewController.m in Sources */,
 				CE6810AA1B80726A001EFB8E /* XMPPLastActivity.m in Sources */,
 				CE6810A71B80726A001EFB8E /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				CE680D561B806D43001EFB8E /* main.m in Sources */,
@@ -1922,7 +1964,7 @@
 				CE680D5E1B806D43001EFB8E /* Base */,
 			);
 			name = Main.storyboard;
-			path = ../../..;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

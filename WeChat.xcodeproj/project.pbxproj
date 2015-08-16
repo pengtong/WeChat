@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4B8533BEE95ABF03509512 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDF9593C4AD18B7AA7925E7 /* libPods.a */; };
 		CE680D561B806D43001EFB8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE680D551B806D43001EFB8E /* main.m */; };
 		CE680D5F1B806D43001EFB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE680D5D1B806D43001EFB8E /* Main.storyboard */; };
 		CE680D611B806D43001EFB8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE680D601B806D43001EFB8E /* Images.xcassets */; };
@@ -165,6 +166,7 @@
 		CE68110C1B8073ED001EFB8E /* UIBarButtonItem+HT.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6811041B8073EC001EFB8E /* UIBarButtonItem+HT.m */; };
 		CE68110D1B8073ED001EFB8E /* NSDate+HH.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6811061B8073EC001EFB8E /* NSDate+HH.m */; };
 		CE6811101B80747A001EFB8E /* WCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68110F1B80747A001EFB8E /* WCCommon.m */; };
+		CE68111D1B808FE2001EFB8E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		106BF0BA446E3488076728FA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1DDF9593C4AD18B7AA7925E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		622CF43674DE988C30F088FA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CE680D501B806D43001EFB8E /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE680D541B806D43001EFB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE680D551B806D43001EFB8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -503,6 +508,8 @@
 		CE6811061B8073EC001EFB8E /* NSDate+HH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HH.m"; sourceTree = "<group>"; };
 		CE68110E1B80747A001EFB8E /* WCCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCCommon.h; sourceTree = "<group>"; };
 		CE68110F1B80747A001EFB8E /* WCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCCommon.m; sourceTree = "<group>"; };
+		CE68111B1B808FE2001EFB8E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +520,7 @@
 				CE680E2E1B807203001EFB8E /* libresolv.dylib in Frameworks */,
 				CE680DCA1B8070A7001EFB8E /* libxml2.dylib in Frameworks */,
 				CE680DC81B80706C001EFB8E /* libidn.a in Frameworks */,
+				0E4B8533BEE95ABF03509512 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +534,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14992C2A7F385E4388496D1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				106BF0BA446E3488076728FA /* Pods.debug.xcconfig */,
+				622CF43674DE988C30F088FA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE680D471B806D43001EFB8E = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +551,8 @@
 				CE680D521B806D43001EFB8E /* WeChat */,
 				CE680D6C1B806D43001EFB8E /* WeChatTests */,
 				CE680D511B806D43001EFB8E /* Products */,
+				E6D1CA576CF76887F23AC1B3 /* Frameworks */,
+				14992C2A7F385E4388496D1D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1560,6 +1579,8 @@
 		CE6810F91B8073CC001EFB8E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CE68111B1B808FE2001EFB8E /* MBProgressHUD+MJ.h */,
+				CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */,
 				CE6810FA1B8073EC001EFB8E /* Foundation+Log.m */,
 				CE6810FB1B8073EC001EFB8E /* UIView+AutoLayout.h */,
 				CE6810FC1B8073EC001EFB8E /* UIView+AutoLayout.m */,
@@ -1577,6 +1598,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		E6D1CA576CF76887F23AC1B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DDF9593C4AD18B7AA7925E7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1584,9 +1613,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE680D731B806D43001EFB8E /* Build configuration list for PBXNativeTarget "WeChat" */;
 			buildPhases = (
+				FEA8A4D6EFFB15913798B5A7 /* Check Pods Manifest.lock */,
 				CE680D4C1B806D43001EFB8E /* Sources */,
 				CE680D4D1B806D43001EFB8E /* Frameworks */,
 				CE680D4E1B806D43001EFB8E /* Resources */,
+				81755C8A5A30C55E5165CDA5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1674,6 +1705,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81755C8A5A30C55E5165CDA5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEA8A4D6EFFB15913798B5A7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE680D4C1B806D43001EFB8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1752,6 +1816,7 @@
 				CE680E141B8071DA001EFB8E /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				CE6810C51B80726A001EFB8E /* XMPPvCardTempModule.m in Sources */,
 				CE6810B61B80726A001EFB8E /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
+				CE68111D1B808FE2001EFB8E /* MBProgressHUD+MJ.m in Sources */,
 				CE6810C11B80726A001EFB8E /* XMPPvCardTempAdrTypes.m in Sources */,
 				CE68109E1B80726A001EFB8E /* XMPPRoster.xcdatamodel in Sources */,
 				CE680E261B8071DA001EFB8E /* DDList.m in Sources */,
@@ -1951,6 +2016,7 @@
 		};
 		CE680D741B806D43001EFB8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 106BF0BA446E3488076728FA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1967,13 +2033,18 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChat/Classes/Main/Lib/XMPP/Vendor/libidn",
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
 		CE680D751B806D43001EFB8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 622CF43674DE988C30F088FA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1990,8 +2061,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChat/Classes/Main/Lib/XMPP/Vendor/libidn",
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
@@ -2048,6 +2123,7 @@
 				CE680D751B806D43001EFB8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE680D761B806D43001EFB8E /* Build configuration list for PBXNativeTarget "WeChatTests" */ = {
 			isa = XCConfigurationList;
@@ -2056,6 +2132,7 @@
 				CE680D781B806D43001EFB8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

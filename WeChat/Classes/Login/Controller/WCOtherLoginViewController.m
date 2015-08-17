@@ -8,7 +8,7 @@
 
 #import "WCOtherLoginViewController.h"
 #import "MBProgressHUD+MJ.h"
-#import "AppDelegate.h"
+#import "WCXmppTool.h"
 
 
 @interface WCOtherLoginViewController ()
@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
+@property (strong, nonatomic) WCXmppTool *xmppTool;
 @end
 
 @implementation WCOtherLoginViewController
@@ -38,6 +39,16 @@
 {
     WCLog(@"WCOtherLoginViewController -- dealloc");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (WCXmppTool *)xmppTool
+{
+    if (!_xmppTool)
+    {
+        _xmppTool = [[WCXmppTool alloc] init];
+    }
+    return _xmppTool;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -69,9 +80,9 @@
     [self setField:self.userField forKey:KeyUser];
     [self setField:self.pwdField forKey:KeyPwd];
     __unsafe_unretained typeof(self)weakSelf = self;
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+
     [MBProgressHUD showMessage:@"正在登录..." toView:self.view];
-    [appDelegate xmppLogin:^(XMPPResultType type) {
+    [self.xmppTool xmppLogin:^(XMPPResultType type) {
         [weakSelf handEventXMPPResultType:type];
     }];
 }

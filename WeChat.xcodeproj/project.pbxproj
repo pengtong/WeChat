@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E4B8533BEE95ABF03509512 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDF9593C4AD18B7AA7925E7 /* libPods.a */; };
+		CE614ADF1B82074B0063D424 /* WCXmppTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614ADE1B82074B0063D424 /* WCXmppTool.m */; };
 		CE680D561B806D43001EFB8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE680D551B806D43001EFB8E /* main.m */; };
 		CE680D5F1B806D43001EFB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE680D5D1B806D43001EFB8E /* Main.storyboard */; };
 		CE680D611B806D43001EFB8E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE680D601B806D43001EFB8E /* Images.xcassets */; };
@@ -185,6 +186,8 @@
 		106BF0BA446E3488076728FA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1DDF9593C4AD18B7AA7925E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		622CF43674DE988C30F088FA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CE614ADD1B82074B0063D424 /* WCXmppTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCXmppTool.h; sourceTree = "<group>"; };
+		CE614ADE1B82074B0063D424 /* WCXmppTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCXmppTool.m; sourceTree = "<group>"; };
 		CE680D501B806D43001EFB8E /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE680D541B806D43001EFB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE680D551B806D43001EFB8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -548,6 +551,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE614ADC1B82071D0063D424 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				CE614ADD1B82074B0063D424 /* WCXmppTool.h */,
+				CE614ADE1B82074B0063D424 /* WCXmppTool.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		CE680D471B806D43001EFB8E = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +655,7 @@
 		CE680D801B806E86001EFB8E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CE614ADC1B82071D0063D424 /* Tools */,
 				CE6810F91B8073CC001EFB8E /* Category */,
 				CE680D8D1B806F2E001EFB8E /* Lib */,
 				CE680D871B806F0F001EFB8E /* Controller */,
@@ -1784,6 +1797,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE614ADF1B82074B0063D424 /* WCXmppTool.m in Sources */,
 				CE680E201B8071DA001EFB8E /* XMPPJID.m in Sources */,
 				CE6810AF1B80726A001EFB8E /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				CE68109A1B80726A001EFB8E /* XMPPProcessOne.m in Sources */,

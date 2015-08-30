@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
-@property (strong, nonatomic) WCXmppTool *xmppTool;
 @end
 
 @implementation WCOtherLoginViewController
@@ -31,6 +30,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.userField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.pwdField];
     
+    self.loginBtn.enabled = (self.userField.text.length && self.pwdField.text.length);
     [self.loginBtn setBackgroundImage:[UIImage imageWithName:@"fts_green_btn"] forState:UIControlStateNormal];
     [self.loginBtn setBackgroundImage:[UIImage imageWithName:@"fts_green_btn_HL"] forState:UIControlStateHighlighted];
 }
@@ -42,20 +42,6 @@
 }
 
 
-- (WCXmppTool *)xmppTool
-{
-    if (!_xmppTool)
-    {
-        _xmppTool = [[WCXmppTool alloc] init];
-    }
-    return _xmppTool;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-}
-
 - (void)close
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -66,56 +52,14 @@
     self.loginBtn.enabled = (self.userField.text.length && self.pwdField.text.length);
 }
 
-- (void)setField:(UITextField *)field forKey:(NSString *)key
-{
-    if (field.text != nil)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:field.text forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
 - (IBAction)login
 {
-    [self setField:self.userField forKey:KeyUser];
-    [self setField:self.pwdField forKey:KeyPwd];
-    __unsafe_unretained typeof(self)weakSelf = self;
-
-    [MBProgressHUD showMessage:@"正在登录..." toView:self.view];
-    [self.xmppTool xmppLogin:^(XMPPResultType type) {
-        [weakSelf handEventXMPPResultType:type];
-    }];
-}
-
-- (void)handEventXMPPResultType:(XMPPResultType)type
-{
-    __unsafe_unretained typeof(self)weakSelf = self;
-    [MBProgressHUD hideHUDForView:self.view];
+    [WCUserInfo sharedUserInfo].user = self.userField.text;
+    [WCUserInfo sharedUserInfo].pwd = self.pwdField.text;
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        switch (type) {
-            case XMPPResultTypeSuccess:
-                [weakSelf entryMain];
-                break;
-            case XMPPResultTypeFailure:
-                [MBProgressHUD showError:@"用户名或者密码错误" toView:self.view];
-                break;
-            case XMPPResultTypeNetError:
-                [MBProgressHUD showError:@"网络不给力" toView:self.view];
-                break;
-            default:
-                break;
-        }
-    });
-
+    [super login];
 }
 
-- (void)entryMain
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = story.instantiateInitialViewController;
-}
+
 
 @end

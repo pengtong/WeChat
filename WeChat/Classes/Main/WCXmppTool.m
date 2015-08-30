@@ -7,39 +7,99 @@
 //
 
 #import "WCXmppTool.h"
-#import "XMPPFramework.h"
+
+#import "XMPPvCardCoreDataStorage.h"
+#import "XMPPReconnect.h"
+#import "XMPPRoster.h"
+#import "XMPPMessageArchiving.h"
+
 
 @interface WCXmppTool ()<XMPPStreamDelegate>
 {
-    XMPPStream *_xmppStream;
     XMPPResultBlock _resultBlock;
+    //电子名片
+    XMPPvCardCoreDataStorage *_vCardStorage;
+    //自动连接
+    XMPPReconnect *_reconnect;
+    //聊天
+    XMPPMessageArchiving *_msgArchiving;
 }
 
 @end
 
+static WCXmppTool *_xmppTool;
+
 @implementation WCXmppTool
+
++ (WCXmppTool *)XMPPTool
+{
+    if (!_xmppTool)
+    {
+        _xmppTool = [[WCXmppTool alloc] init];
+    }
+    return _xmppTool;
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _xmppTool = [super allocWithZone:zone];
+    });
+    return _xmppTool;
+}
+
 #pragma mark --Xmpp
 //1.初始化xmpp
 - (void)setupXmppStream
 {
     _xmppStream = [[XMPPStream alloc] init];
     
+    _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    _vCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:_vCardStorage];
+    [_vCard activate:_xmppStream];
+    
+    _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
+    [_avatar activate:_xmppStream];
+    
+    _reconnect = [[XMPPReconnect alloc] init];
+    [_reconnect activate:_xmppStream];
+    
+    _rosterStorge = [[XMPPRosterCoreDataStorage alloc] init];
+    _roster = [[XMPPRoster alloc] initWithRosterStorage:_rosterStorge];
+    [_roster activate:_xmppStream];
+    
+    _msgStorge = [[XMPPMessageArchivingCoreDataStorage alloc] init];
+    _msgArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgStorge];
+    [_msgArchiving activate:_xmppStream];
+
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
 //2.连接服务器
 -(void)connectToHost
 {
+    NSString *user = nil;
+    NSError *error = nil;
+    
     if (!_xmppStream)
     {
         [self setupXmppStream];
     }
     
-    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:KeyUser];
-    _xmppStream.myJID = [XMPPJID jidWithUser:user domain:@"test.local" resource:@"iphone"];
+    if (self.registerUser)
+    {
+        user = [WCUserInfo sharedUserInfo].registerUser;
+    }
+    else
+    {
+        user = [WCUserInfo sharedUserInfo].user;
+    }
+
+    _xmppStream.myJID = [XMPPJID jidWithUser:user domain:@"userdemacbook-pro.local" resource:@"iphone"];
     _xmppStream.hostName = @"127.0.0.1";
     _xmppStream.hostPort = 5222;
-    NSError *error = nil;
+    
     if (![_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
     {
         WCLog(@"%@", error);
@@ -50,8 +110,18 @@
 - (void)sendPwdToHost
 {
     NSError *error = nil;
-    NSString *pwd = [[NSUserDefaults standardUserDefaults] objectForKey:KeyPwd];
-    [_xmppStream authenticateWithPassword:pwd error:&error];
+    NSString *pwd = nil;
+    
+    if (self.registerUser)
+    {
+        pwd = [WCUserInfo sharedUserInfo].registerPwd;
+        [_xmppStream registerWithPassword:pwd error:&error];
+    }
+    else
+    {
+        pwd = [WCUserInfo sharedUserInfo].pwd;
+        [_xmppStream authenticateWithPassword:pwd error:&error];
+    }
     
     if (error)
     {
@@ -76,12 +146,48 @@
     [self connectToHost];
 }
 
+- (void)xmppRegister:(XMPPResultBlock)block
+{
+    _resultBlock = block;
+    
+    [self connectToHost];
+}
+
 - (void)xmpplogout
 {
     XMPPPresence *offline = [XMPPPresence presenceWithType:@"unavailable"];
     [_xmppStream sendElement:offline];
+    [_xmppStream disconnect];
+    [WCUserInfo sharedUserInfo].status = NO;
+    [[WCUserInfo sharedUserInfo] saveUserInfo];
+}
+
+-(void)teardownXmpp
+{
+    [_xmppStream removeDelegate:self];
+    
+    [_vCard deactivate];
+    [_avatar deactivate];
+    [_reconnect deactivate];
+    [_roster deactivate];
+    [_msgArchiving deactivate];
     
     [_xmppStream disconnect];
+    
+    _reconnect = nil;
+    _vCard = nil;
+    _vCardStorage = nil;
+    _avatar = nil;
+    _roster = nil;
+    _rosterStorge = nil;
+    _msgStorge = nil;
+    _msgArchiving = nil;
+    _xmppStream = nil;
+}
+
+- (void)dealloc
+{
+    [self teardownXmpp];
 }
 
 #pragma mark --XMPPStreamDelegate
@@ -104,12 +210,18 @@
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
     WCLog(@"授权成功");
+
     [self sendOnlineToHost];
     
     if (_resultBlock)
     {
         _resultBlock(XMPPResultTypeSuccess);
     }
+
+//    WCUservCard *uservCard = [WCUservCard sharedUservCard];
+//
+//    uservCard.vCordTemp = self.vCard.myvCardTemp;
+//    [uservCard saveUservCard];
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error
@@ -121,4 +233,24 @@
         _resultBlock(XMPPResultTypeFailure);
     }
 }
+
+- (void)xmppStreamDidRegister:(XMPPStream *)sender
+{
+    WCLog(@"注册成功");
+    if (_resultBlock)
+    {
+        _resultBlock(XMPPResultTypeRegisterSuccess);
+    }
+    
+}
+
+- (void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error
+{
+    WCLog(@"注册失败%@", error);
+    if (_resultBlock)
+    {
+        _resultBlock(XMPPResultTypeRegisterFailure);
+    }
+}
+
 @end

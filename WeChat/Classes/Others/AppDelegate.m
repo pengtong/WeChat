@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "WCXmppTool.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
 
 @interface AppDelegate ()
 
@@ -15,9 +17,29 @@
 
 @implementation AppDelegate
 
+- (void)setupTabbarTheme
+{
+    UITabBarItem *tabbarItem = [UITabBarItem appearance];
+
+    NSMutableDictionary *dictnSelected = [NSMutableDictionary dictionary];
+    dictnSelected[NSForegroundColorAttributeName] = [UIColor colorWithRed:14/255.0 green:180/255.0 blue:0 alpha:1.0];
+    [tabbarItem setTitleTextAttributes:dictnSelected forState:UIControlStateSelected];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setupTabbarTheme];
+    
+    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [[WCUserInfo sharedUserInfo] loadUserInfo];
+    
+    if ([WCUserInfo sharedUserInfo].status)
+    {
+        self.window.rootViewController = [UIStoryboard storyboardWithName:@"Home" bundle:nil].instantiateInitialViewController;
+        [[WCXmppTool XMPPTool] xmppLogin:nil];
+    }
+    
     return YES;
 }
 

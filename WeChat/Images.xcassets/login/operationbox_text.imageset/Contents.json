@@ -5,9 +5,23 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 10,
+          "top" : 10,
+          "right" : 16,
+          "left" : 15
+        }
+      },
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "operationbox_text@2x.png"
+      "filename" : "operationbox_text@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

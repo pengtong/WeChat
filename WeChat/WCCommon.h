@@ -16,6 +16,7 @@
 #import "UIBarButtonItem+HT.h"
 #import "NSDate+HH.h"
 #import "UIView+AutoLayout.h"
+#import "WCUserInfo.h"
 
 #ifdef DEBUG
 #define WCLog(...) NSLog(__VA_ARGS__)
@@ -23,6 +24,4 @@
 #define WCLog(...) nil
 #endif
 
-extern NSString* const KeyUser;
-extern NSString* const KeyPwd;
 #endif

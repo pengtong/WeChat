@@ -14,6 +14,11 @@ typedef enum {
     MessageTypeOther
 }MessageType;
 
+typedef enum {
+    MessageBodyTypeText = 0,
+    MessageBodyTypeImage
+}MessageBodyType;
+
 @interface Message : NSObject
 
 @property (nonatomic, copy) NSString *text;
@@ -26,7 +31,9 @@ typedef enum {
 
 @property (nonatomic, assign) MessageType type;
 
+@property (nonatomic, copy) NSString *imageUrl;
 
-- (instancetype) initWithDict:(NSDictionary *) dict;
-+ (instancetype) messageWithDict:(NSDictionary *) dict;
+@property (nonatomic, assign) MessageBodyType bodyType;
+
+
 @end

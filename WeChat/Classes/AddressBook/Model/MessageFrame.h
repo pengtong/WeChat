@@ -25,6 +25,8 @@
 
 @property (nonatomic, assign, readonly) CGRect textF;
 
+@property (nonatomic, assign, readonly) CGRect imageF;
+
 @property (nonatomic, assign, readonly) CGFloat cellHeight;
 
 @end

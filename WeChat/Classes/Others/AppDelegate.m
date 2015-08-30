@@ -37,7 +37,17 @@
     if ([WCUserInfo sharedUserInfo].status)
     {
         self.window.rootViewController = [UIStoryboard storyboardWithName:@"Home" bundle:nil].instantiateInitialViewController;
-        [[WCXmppTool XMPPTool] xmppLogin:nil];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[WCXmppTool XMPPTool] xmppLogin:nil];
+        });
+    }
+    
+    if ([[UIDevice currentDevice].systemVersion doubleValue] > 8.0)
+    {
+        UIUserNotificationSettings *noftSetting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        
+        [application registerUserNotificationSettings:noftSetting];
     }
     
     return YES;

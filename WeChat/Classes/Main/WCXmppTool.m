@@ -72,7 +72,9 @@ static WCXmppTool *_xmppTool;
     _msgStorge = [[XMPPMessageArchivingCoreDataStorage alloc] init];
     _msgArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgStorge];
     [_msgArchiving activate:_xmppStream];
-
+    
+    _xmppStream.enableBackgroundingOnSocket = YES;
+    
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
@@ -86,6 +88,8 @@ static WCXmppTool *_xmppTool;
     {
         [self setupXmppStream];
     }
+    
+    [self postStatusChangeNotification:XMPPResultTypeConnect];
     
     if (self.registerUser)
     {
@@ -103,6 +107,7 @@ static WCXmppTool *_xmppTool;
     if (![_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
     {
         WCLog(@"%@", error);
+        [self postStatusChangeNotification:XMPPResultTypeFailure];
     }
 }
 
@@ -125,6 +130,7 @@ static WCXmppTool *_xmppTool;
     
     if (error)
     {
+        [self postStatusChangeNotification:XMPPResultTypeFailure];
         WCLog(@"%@", error);
     }
 }
@@ -188,6 +194,15 @@ static WCXmppTool *_xmppTool;
 - (void)dealloc
 {
     [self teardownXmpp];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)postStatusChangeNotification: (XMPPResultType )resultType
+{
+    NSDictionary *info = @{WCXmppToolStatusKey : @(resultType)};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:WCXmppToolStatusChangeNotification object:nil userInfo:info];
 }
 
 #pragma mark --XMPPStreamDelegate
@@ -204,6 +219,7 @@ static WCXmppTool *_xmppTool;
     if (error && _resultBlock)
     {
         _resultBlock(XMPPResultTypeNetError);
+        [self postStatusChangeNotification:XMPPResultTypeFailure];
     }
 }
 
@@ -217,7 +233,7 @@ static WCXmppTool *_xmppTool;
     {
         _resultBlock(XMPPResultTypeSuccess);
     }
-
+    [self postStatusChangeNotification:XMPPResultTypeSuccess];
 //    WCUservCard *uservCard = [WCUservCard sharedUservCard];
 //
 //    uservCard.vCordTemp = self.vCard.myvCardTemp;
@@ -231,6 +247,7 @@ static WCXmppTool *_xmppTool;
     if (_resultBlock)
     {
         _resultBlock(XMPPResultTypeFailure);
+        [self postStatusChangeNotification:XMPPResultTypeFailure];
     }
 }
 
@@ -252,5 +269,39 @@ static WCXmppTool *_xmppTool;
         _resultBlock(XMPPResultTypeRegisterFailure);
     }
 }
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+    NSInteger count = [[UIApplication sharedApplication] applicationIconBadgeNumber];
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive)
+    {
+        UILocalNotification *localNoti = [[UILocalNotification alloc] init];
+        NSRange fromRange = [message.fromStr rangeOfString:@"@"];
+        NSString *fromName = [message.fromStr substringToIndex:fromRange.location];
+        localNoti.alertBody = [NSString stringWithFormat:@"%@: %@", fromName, message.body];
+        localNoti.soundName = @"default";
+        localNoti.fireDate = [NSDate date];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:++count];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
+    }
+}
+
+//- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+//{
+//    if([UIApplication sharedApplication].applicationState != UIApplicationStateActive)
+//    {
+//        UILocalNotification *localNoti = [[UILocalNotification alloc] init];
+//        
+//        localNoti.alertBody = [NSString stringWithFormat:@"%@\n%@",message.fromStr,message.body];
+//        
+//        localNoti.fireDate = [NSDate date];
+//        
+//        localNoti.soundName = @"default";
+//        
+//        [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
+//        
+//        //{"aps":{'alert':"zhangsan\n have dinner":'sound':'default',badge:'12'}}
+//    }
+//}
 
 @end

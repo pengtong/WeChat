@@ -17,6 +17,8 @@
 
 @property (nonatomic, weak) UIButton *textButton;
 
+@property (nonatomic, weak) UIImageView *chatImage;
+
 @property (nonatomic, strong) MessageFrame *msgFrame;
 
 + (instancetype) cellWithTableView:(UITableView *)tableView;

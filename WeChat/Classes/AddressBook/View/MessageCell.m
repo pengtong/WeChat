@@ -8,6 +8,7 @@
 
 #import "MessageCell.h"
 #import "Message.h"
+#import "UIImageView+WebCache.h"
 
 @implementation MessageCell
 
@@ -34,6 +35,11 @@
         [textButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.contentView addSubview:textButton];
         _textButton = textButton;
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.hidden = YES;
+        [self.contentView addSubview:imageView];
+        _chatImage = imageView;
         
         self.backgroundColor = [UIColor clearColor];
     }
@@ -62,24 +68,32 @@
     
     self.iconButton.frame = _msgFrame.iconF;
     
-    [self.textButton setTitle:_msgFrame.msg.text forState:UIControlStateNormal];
-    
-    if (_msgFrame.msg.type == MessageTypeOther) {
-        UIImage *normalImage = [UIImage imageNamed:@"chat_recive_nor"];
-        UIImage *lastImage = [normalImage stretchableImageWithLeftCapWidth:normalImage.size.width * 0.5 topCapHeight:normalImage.size.height * 0.5];
+    if (_msgFrame.msg.bodyType == MessageBodyTypeText)
+    {
+        [self.textButton setTitle:_msgFrame.msg.text forState:UIControlStateNormal];
         
-        [self.textButton setBackgroundImage:lastImage forState:UIControlStateNormal];
-    }else {
-        
-        UIImage *normalImage = [UIImage imageNamed:@"chat_send_nor"];
-        UIImage *lastImage = [normalImage stretchableImageWithLeftCapWidth:normalImage.size.width * 0.5 topCapHeight:normalImage.size.height * 0.5];
-        
-        [self.textButton setBackgroundImage:lastImage forState:UIControlStateNormal];
-//        self.textButton.backgroundColor = [UIColor redColor];
-        
+        if (_msgFrame.msg.type == MessageTypeOther) {
+            UIImage *normalImage = [UIImage imageNamed:@"chat_recive_nor"];
+            UIImage *lastImage = [normalImage stretchableImageWithLeftCapWidth:normalImage.size.width * 0.5 topCapHeight:normalImage.size.height * 0.5];
+            
+            [self.textButton setBackgroundImage:lastImage forState:UIControlStateNormal];
+        }else {
+            
+            UIImage *normalImage = [UIImage imageNamed:@"chat_send_nor"];
+            UIImage *lastImage = [normalImage stretchableImageWithLeftCapWidth:normalImage.size.width * 0.5 topCapHeight:normalImage.size.height * 0.5];
+            
+            [self.textButton setBackgroundImage:lastImage forState:UIControlStateNormal];
+        }
+        self.chatImage.hidden = YES;
+        self.textButton.frame = _msgFrame.textF;
     }
-    
-    self.textButton.frame = _msgFrame.textF;
+    else if (_msgFrame.msg.bodyType == MessageBodyTypeImage)
+    {
+        [self.textButton setTitle:@"" forState:UIControlStateNormal];
+        [self.chatImage sd_setImageWithURL:[NSURL URLWithString:_msgFrame.msg.imageUrl] placeholderImage:nil];
+        self.chatImage.hidden = NO;
+        self.chatImage.frame = _msgFrame.imageF;
+    }
 }
 
 - (void) setMsgFrame:(MessageFrame *)msgFrame

@@ -230,6 +230,9 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted" image="chat_bottom_up_press"/>
+                                        <connections>
+                                            <action selector="clickPlusButton" destination="cBu-Ko-NPG" eventType="touchUpInside" id="jdG-5d-xtS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyK-0j-Naf" userLabel="emoje">
                                         <rect key="frame" x="512" y="8" width="34" height="34"/>
@@ -747,10 +750,10 @@
             </objects>
             <point key="canvasLocation" x="-643" y="-1290"/>
         </scene>
-        <!--微信-->
+        <!--We Chat Controller-->
         <scene sceneID="eKB-nR-iQv">
             <objects>
-                <viewController id="E3m-zv-0eL" customClass="WCChatViewController" sceneMemberID="viewController">
+                <viewController id="E3m-zv-0eL" customClass="WCWeChatController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="14O-wI-vo2"/>
                         <viewControllerLayoutGuide type="bottom" id="oP1-pr-4m5"/>
@@ -760,11 +763,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="微信" id="lfM-yk-fkl"/>
+                    <navigationItem key="navigationItem" id="lfM-yk-fkl">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="Khr-6T-MBD">
+                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-sh-PR9">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="vfj-SL-lNL">
+                                    <rect key="frame" x="50" y="6" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="AB7-85-Mon"/>
+                                        <constraint firstAttribute="height" constant="20" id="Xkq-l0-u6j"/>
+                                    </constraints>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="C3H-sh-PR9" secondAttribute="bottom" id="Zky-bo-hxp"/>
+                                <constraint firstItem="C3H-sh-PR9" firstAttribute="top" secondItem="Khr-6T-MBD" secondAttribute="top" id="hi0-yo-vUp"/>
+                                <constraint firstAttribute="trailing" secondItem="C3H-sh-PR9" secondAttribute="trailing" id="iz8-6M-UEQ"/>
+                                <constraint firstItem="C3H-sh-PR9" firstAttribute="leading" secondItem="Khr-6T-MBD" secondAttribute="leading" id="lIb-rh-hKM"/>
+                                <constraint firstItem="vfj-SL-lNL" firstAttribute="leading" secondItem="Khr-6T-MBD" secondAttribute="leading" constant="50" id="pkd-xl-vVh"/>
+                                <constraint firstItem="vfj-SL-lNL" firstAttribute="top" secondItem="Khr-6T-MBD" secondAttribute="top" constant="6" id="rYi-cp-I4X"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityView" destination="vfj-SL-lNL" id="DFX-mR-sG6"/>
+                        <outlet property="titleLabel" destination="C3H-sh-PR9" id="2xu-K9-qjC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THi-MZ-eHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="-1390"/>
+            <point key="canvasLocation" x="212" y="-1401"/>
         </scene>
     </scenes>
     <resources>

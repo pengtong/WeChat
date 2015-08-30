@@ -13,6 +13,8 @@
 		CE1B404E1B8F56B500CFE071 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B404D1B8F56B500CFE071 /* Message.m */; };
 		CE1B40511B8F56C000CFE071 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B40501B8F56C000CFE071 /* MessageCell.m */; };
 		CE1B40541B8F56CC00CFE071 /* MessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B40531B8F56CC00CFE071 /* MessageFrame.m */; };
+		CE2D96771B932BF7007DDF37 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D96761B932BF7007DDF37 /* HttpTool.m */; };
+		CE2D967C1B933D8E007DDF37 /* WCWeChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D967B1B933D8E007DDF37 /* WCWeChatController.m */; };
 		CE3B7C6C1B8C9E260056DA5B /* WCAddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3B7C6B1B8C9E260056DA5B /* WCAddFriendController.m */; };
 		CE614ADF1B82074B0063D424 /* WCXmppTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614ADE1B82074B0063D424 /* WCXmppTool.m */; };
 		CE614AE21B821D080063D424 /* WCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614AE11B821D080063D424 /* WCNavigationController.m */; };
@@ -180,7 +182,6 @@
 		CE84584D1B8F37E60098CCD8 /* WCMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE84584C1B8F37E60098CCD8 /* WCMessageViewController.m */; };
 		CE9C12F21B80C4B4003E336D /* WCOtherLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C12F11B80C4B4003E336D /* WCOtherLoginViewController.m */; };
 		CE9C50DB1B88D133000203A7 /* WCUservCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C50DA1B88D133000203A7 /* WCUservCard.m */; };
-		CE9C50DE1B88D9BF000203A7 /* WCChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C50DD1B88D9BF000203A7 /* WCChatViewController.m */; };
 		CEA75CCB1B89EDFF003E6244 /* WCProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA75CCA1B89EDFF003E6244 /* WCProfileController.m */; };
 		CEA75CCE1B8A02B6003E6244 /* WCSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA75CCD1B8A02B6003E6244 /* WCSettingController.m */; };
 		CEA75CD11B8A10F7003E6244 /* WCEditNickNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA75CD01B8A10F7003E6244 /* WCEditNickNameController.m */; };
@@ -395,6 +396,10 @@
 		CE1B40501B8F56C000CFE071 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		CE1B40521B8F56CC00CFE071 /* MessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageFrame.h; sourceTree = "<group>"; };
 		CE1B40531B8F56CC00CFE071 /* MessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageFrame.m; sourceTree = "<group>"; };
+		CE2D96751B932BF7007DDF37 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
+		CE2D96761B932BF7007DDF37 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		CE2D967A1B933D8E007DDF37 /* WCWeChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCWeChatController.h; sourceTree = "<group>"; };
+		CE2D967B1B933D8E007DDF37 /* WCWeChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCWeChatController.m; sourceTree = "<group>"; };
 		CE3B7C6A1B8C9E260056DA5B /* WCAddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAddFriendController.h; sourceTree = "<group>"; };
 		CE3B7C6B1B8C9E260056DA5B /* WCAddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAddFriendController.m; sourceTree = "<group>"; };
 		CE614ADD1B82074B0063D424 /* WCXmppTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCXmppTool.h; sourceTree = "<group>"; };
@@ -737,8 +742,6 @@
 		CE9C12F11B80C4B4003E336D /* WCOtherLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCOtherLoginViewController.m; sourceTree = "<group>"; };
 		CE9C50D91B88D133000203A7 /* WCUservCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCUservCard.h; sourceTree = "<group>"; };
 		CE9C50DA1B88D133000203A7 /* WCUservCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCUservCard.m; sourceTree = "<group>"; };
-		CE9C50DC1B88D9BF000203A7 /* WCChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCChatViewController.h; sourceTree = "<group>"; };
-		CE9C50DD1B88D9BF000203A7 /* WCChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCChatViewController.m; sourceTree = "<group>"; };
 		CEA75CC91B89EDFF003E6244 /* WCProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCProfileController.h; sourceTree = "<group>"; };
 		CEA75CCA1B89EDFF003E6244 /* WCProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCProfileController.m; sourceTree = "<group>"; };
 		CEA75CCC1B8A02B6003E6244 /* WCSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingController.h; sourceTree = "<group>"; };
@@ -1070,6 +1073,32 @@
 			name = ChatMsg;
 			sourceTree = "<group>";
 		};
+		CE2D96741B932BD2007DDF37 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D96751B932BF7007DDF37 /* HttpTool.h */,
+				CE2D96761B932BF7007DDF37 /* HttpTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		CE2D96781B933D3F007DDF37 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D96791B933D6B007DDF37 /* Controller */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		CE2D96791B933D6B007DDF37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D967A1B933D8E007DDF37 /* WCWeChatController.h */,
+				CE2D967B1B933D8E007DDF37 /* WCWeChatController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CE614ADC1B82071D0063D424 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1183,6 +1212,7 @@
 		CE680D791B806DAD001EFB8E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CE2D96781B933D3F007DDF37 /* WeChat */,
 				CE7743761B8B61D600A6EAD4 /* AddressBook */,
 				CE614AE61B8221DB0063D424 /* Me */,
 				CE9C12F31B80CB17003E336D /* Home */,
@@ -2196,6 +2226,7 @@
 		CE7743761B8B61D600A6EAD4 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
+				CE2D96741B932BD2007DDF37 /* Tool */,
 				CE7743771B8B61D700A6EAD4 /* Controller */,
 				CE77437A1B8B61D700A6EAD4 /* Model */,
 				CE77437B1B8B61D700A6EAD4 /* View */,
@@ -2241,35 +2272,9 @@
 		CE9C12F31B80CB17003E336D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CE9C12F41B80CB17003E336D /* Controller */,
-				CE9C12F51B80CB17003E336D /* Model */,
-				CE9C12F61B80CB17003E336D /* View */,
 				CE614AEF1B822BD50063D424 /* Home.storyboard */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		CE9C12F41B80CB17003E336D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CE9C50DC1B88D9BF000203A7 /* WCChatViewController.h */,
-				CE9C50DD1B88D9BF000203A7 /* WCChatViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		CE9C12F51B80CB17003E336D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE9C12F61B80CB17003E336D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CEFBF0411B8E1152006101B3 /* ChatMsg */ = {
@@ -3123,6 +3128,7 @@
 				CE6810E71B80726A001EFB8E /* XMPPStreamManagementStanzas.m in Sources */,
 				CE6810AB1B80726A001EFB8E /* XMPPPrivacy.m in Sources */,
 				CE6810EC1B80726A001EFB8E /* XMPPTime.m in Sources */,
+				CE2D967C1B933D8E007DDF37 /* WCWeChatController.m in Sources */,
 				CE6810EF1B80726A001EFB8E /* XMPPAttentionModule.m in Sources */,
 				CE68110C1B8073ED001EFB8E /* UIBarButtonItem+HT.m in Sources */,
 				CEFBF3271B8E17B2006101B3 /* XHMessageBubbleHelper.m in Sources */,
@@ -3322,12 +3328,12 @@
 				CE680E121B8071DA001EFB8E /* XMPPAnonymousAuthentication.m in Sources */,
 				CEFBF35F1B8E17B2006101B3 /* MLLetterIndexNavigationView.m in Sources */,
 				CEFBF33A1B8E17B2006101B3 /* XHEmotion.m in Sources */,
+				CE2D96771B932BF7007DDF37 /* HttpTool.m in Sources */,
 				CE68110A1B8073ED001EFB8E /* NString+Extend.m in Sources */,
 				CE6810D21B80726A001EFB8E /* XMPPSoftwareVersion.m in Sources */,
 				CECBA3F81B84B52D00DD6C64 /* UITextField+Extend.m in Sources */,
 				CEAFCAB01B8371DC00F52ABF /* WCBaseLoginViewController.m in Sources */,
 				CE6810E21B80726A001EFB8E /* XMPPPresence+XEP_0172.m in Sources */,
-				CE9C50DE1B88D9BF000203A7 /* WCChatViewController.m in Sources */,
 				CE6810D31B80726A001EFB8E /* XMPPTransports.m in Sources */,
 				CE6810EA1B80726A001EFB8E /* XMPPPing.m in Sources */,
 				CEA75CCB1B89EDFF003E6244 /* WCProfileController.m in Sources */,

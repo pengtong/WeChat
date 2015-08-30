@@ -13,10 +13,11 @@
 #import "MessageFrame.h"
 #import "XMPPMessage.h"
 #import "WCUservCard.h"
+#import "HttpTool.h"
 
 #define kMyJID [XMPPJID jidWithString:[WCUserInfo sharedUserInfo].jid]
 
-@interface WCMessageViewController () <UITextViewDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface WCMessageViewController () <UITextViewDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     NSFetchedResultsController *_fetchedResultsController;
 }
@@ -24,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-
+@property (strong, nonatomic) HttpTool *httpTool;
 @property (nonatomic, strong) NSMutableArray *MesageData;
 
 @end
@@ -45,6 +46,15 @@
     [self loadData];
     
     WCLog(@"%@", self.userInfo);
+}
+
+- (HttpTool *)httpTool
+{
+    if (!_httpTool)
+    {
+        _httpTool = [[HttpTool alloc] init];
+    }
+    return _httpTool;
 }
 
 - (void)keyboardShow:(NSNotification *)notfication
@@ -75,40 +85,6 @@
     }
     return _MesageData;
 }
-
-//- (void)loadData2
-//{
-//    // 上下文
-//    NSManagedObjectContext *context = [WCXmppTool XMPPTool].msgStorge.mainThreadManagedObjectContext;
-//    // 请求对象
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"XMPPMessageArchiving_Message_CoreDataObject"];
-//    
-//    
-//    // 过滤、排序
-//    // 1.当前登录用户的JID的消息
-//    // 2.好友的Jid的消息
-//    NSPredicate *pre = [NSPredicate predicateWithFormat:@"streamBareJidStr = %@ AND bareJidStr = %@",[WCUserInfo sharedUserInfo].jid,self.userInfo.jid];
-//    NSLog(@"%@",pre);
-//    request.predicate = pre;
-//    
-//    // 时间升序
-//    NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
-//    request.sortDescriptors = @[timeSort];
-//    
-//    // 查询
-//    _resultsContr = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-//    
-//    NSError *err = nil;
-//    // 代理
-//    _resultsContr.delegate = self;
-//    
-//    [_resultsContr performFetch:&err];
-//    
-//    NSLog(@"%@",_resultsContr.fetchedObjects);
-//    if (err) {
-//        WCLog(@"%@",err);
-//    }
-//}
 
 - (void)loadData
 {
@@ -145,7 +121,20 @@
         MessageFrame *msgFrame = [[MessageFrame alloc] init];
         MessageFrame *lastFrame = [self.MesageData lastObject];
         Message *message = [[Message alloc] init];
-        message.text = msgStorage.body;
+        
+        NSString *chatType = [msgStorage.message attributeStringValueForName:@"bodyType"];
+        
+        if ([chatType isEqualToString:@"image"])
+        {
+            message.bodyType = MessageBodyTypeImage;
+            message.imageUrl = msgStorage.body;
+        }
+        else
+        {
+            message.bodyType = MessageBodyTypeText;
+            message.text = msgStorage.body;
+        }
+        
         NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
         fmt.dateFormat = @"MM-dd HH:mm";
         message.time = [fmt stringFromDate:msgStorage.timestamp];
@@ -154,6 +143,7 @@
         message.showTime = [lastFrame.msg.time isEqualToString:message.time] ? NO : YES;
         message.type = [msgStorage.outgoing boolValue] ? MessageTypeMe : MessageTypeOther;
         msgFrame.msg = message;
+        
         [self.MesageData addObject:msgFrame];
     }
 }
@@ -185,13 +175,46 @@
     
     [[WCXmppTool XMPPTool].xmppStream sendElement:msg];
 }
+- (IBAction)clickPlusButton
+{
+    UIImagePickerController *imagePick =[[UIImagePickerController alloc] init];
+    imagePick.delegate = self;
+    imagePick.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePick animated:YES completion:nil];
+}
+
+#pragma mark --UINavigationControllerDelegate, UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *originImage = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString *user = [WCUserInfo sharedUserInfo].user;
+    
+    NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+    dataFormatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *timeStr = [dataFormatter stringFromDate:[NSDate date]];
+    NSString *fileName = [user stringByAppendingString:timeStr];
+    
+    NSString *uploadUrl = [@"http://localhost:8080/imfileserver/Upload/Image/" stringByAppendingString:fileName];
+    
+    // HTTP put 上传
+#warning 服务器只接接收jpg
+    [self.httpTool uploadData:UIImageJPEGRepresentation(originImage, 0.75) url:[NSURL URLWithString:uploadUrl] progressBlock:nil completion:^(NSError *error) {
+        
+        if (!error) {
+            NSLog(@"上传成功");
+            [self sendMsgWithText:uploadUrl bodyType:@"image"];
+        }
+    }];
+}
 
 #pragma mark --UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if ([scrollView isKindOfClass:[UITableView class]])
     {
-//        [self.textView resignFirstResponder];
+        [self.textView resignFirstResponder];
     }
 }
 

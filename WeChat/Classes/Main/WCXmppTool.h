@@ -12,10 +12,14 @@
 #import "XMPPvCardAvatarModule.h"
 #import "XMPPMessageArchivingCoreDataStorage.h"
 
+#define WCXmppToolStatusChangeNotification @"WCXmppToolStatusChangeNotification"
+#define WCXmppToolStatusKey @"loginStatus"
+
 @interface WCXmppTool : NSObject
 
 typedef NS_ENUM(NSInteger, XMPPResultType)
 {
+    XMPPResultTypeConnect,
     XMPPResultTypeSuccess,
     XMPPResultTypeFailure,
     XMPPResultTypeRegisterSuccess,

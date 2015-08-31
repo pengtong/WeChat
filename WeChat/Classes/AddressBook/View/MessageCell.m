@@ -90,6 +90,7 @@
     else if (_msgFrame.msg.bodyType == MessageBodyTypeImage)
     {
         [self.textButton setTitle:@"" forState:UIControlStateNormal];
+        [self.textButton setBackgroundImage:nil forState:UIControlStateNormal];
         [self.chatImage sd_setImageWithURL:[NSURL URLWithString:_msgFrame.msg.imageUrl] placeholderImage:nil];
         self.chatImage.hidden = NO;
         self.chatImage.frame = _msgFrame.imageF;

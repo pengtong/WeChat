@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageDisplayKit/XHMessageTableViewController.h>
+#import "WCChatUserInfo.h"
 
 @interface WCChatMessageController : XHMessageTableViewController
+
+@property (nonatomic, strong) WCChatUserInfo *userInfo;
+
 
 @end

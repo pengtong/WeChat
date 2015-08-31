@@ -106,26 +106,49 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-//    WCChatMessageController *chatMagVC = [[WCChatMessageController alloc] init];
-//    [self.navigationController pushViewController:chatMagVC animated:YES];
-    WCFriendCell *cell = (WCFriendCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    XMPPUserCoreDataStorageObject *friendStorage = _fetchedResultsController.fetchedObjects[indexPath.row];
-    WCChatUserInfo *userInfo = [[WCChatUserInfo alloc] init];
     
+    WCFriendCell *cell = (WCFriendCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    XMPPUserCoreDataStorageObject *friendStorage = _fetchedResultsController.fetchedObjects[indexPath.row];
+    
+    WCChatUserInfo *userInfo = [[WCChatUserInfo alloc] init];
     userInfo.userName = cell.nameLabel.text;
     userInfo.userIcon = cell.iconImage.image;
     userInfo.jid = friendStorage.jid;
-    [self performSegueWithIdentifier:@"chatmsg" sender:userInfo];
+    
+    WCChatMessageController *chatMagVC = [[WCChatMessageController alloc] init];
+    chatMagVC.userInfo = userInfo;
+    [self.navigationController pushViewController:chatMagVC animated:YES];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(WCChatUserInfo *)sender
-{
-    id destVC = segue.destinationViewController;
-    if ([destVC isKindOfClass:[WCMessageViewController class]])
-    {
-        WCMessageViewController *msgVC = (WCMessageViewController *)destVC;
-        msgVC.userInfo = sender;
-    }
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+//{
+//    return [NSString stringWithFormat:@"%lu位联系人", (unsigned long)_fetchedResultsController.fetchedObjects.count];
+//}
+
+#warning 第二种实现
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+//
+//    WCFriendCell *cell = (WCFriendCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+//    XMPPUserCoreDataStorageObject *friendStorage = _fetchedResultsController.fetchedObjects[indexPath.row];
+//    WCChatUserInfo *userInfo = [[WCChatUserInfo alloc] init];
+//    
+//    userInfo.userName = cell.nameLabel.text;
+//    userInfo.userIcon = cell.iconImage.image;
+//    userInfo.jid = friendStorage.jid;
+//    [self performSegueWithIdentifier:@"chatmsg" sender:userInfo];
+//}
+//
+//- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(WCChatUserInfo *)sender
+//{
+//    id destVC = segue.destinationViewController;
+//    if ([destVC isKindOfClass:[WCMessageViewController class]])
+//    {
+//        WCMessageViewController *msgVC = (WCMessageViewController *)destVC;
+//        msgVC.userInfo = sender;
+//    }
+//}
 
 @end

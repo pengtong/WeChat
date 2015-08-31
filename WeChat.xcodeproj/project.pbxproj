@@ -16,6 +16,16 @@
 		CE2D96771B932BF7007DDF37 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D96761B932BF7007DDF37 /* HttpTool.m */; };
 		CE2D967C1B933D8E007DDF37 /* WCWeChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D967B1B933D8E007DDF37 /* WCWeChatController.m */; };
 		CE3B7C6C1B8C9E260056DA5B /* WCAddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3B7C6B1B8C9E260056DA5B /* WCAddFriendController.m */; };
+		CE5C540C1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C540B1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.m */; };
+		CE5C54101B948F4D001F50B1 /* shake_match.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5C540D1B948F4D001F50B1 /* shake_match.wav */; };
+		CE5C54111B948F4D001F50B1 /* shake_nomatch.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5C540E1B948F4D001F50B1 /* shake_nomatch.wav */; };
+		CE5C54121B948F4D001F50B1 /* shake_sound_male.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE5C540F1B948F4D001F50B1 /* shake_sound_male.wav */; };
+		CE5C54291B949201001F50B1 /* WCDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C54231B949201001F50B1 /* WCDiscoverController.m */; };
+		CE5C542A1B949201001F50B1 /* WCQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C54251B949201001F50B1 /* WCQRCodeViewController.m */; };
+		CE5C542E1B949302001F50B1 /* WCShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C542D1B949302001F50B1 /* WCShakeViewController.m */; };
+		CE5C54321B94932A001F50B1 /* XHScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C54311B94932A001F50B1 /* XHScanningView.m */; };
+		CE5C54351B94934A001F50B1 /* XHFoundationCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C54341B94934A001F50B1 /* XHFoundationCommon.m */; };
+		CE5C54381B949558001F50B1 /* WCBottleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C54371B949558001F50B1 /* WCBottleViewController.m */; };
 		CE614ADF1B82074B0063D424 /* WCXmppTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614ADE1B82074B0063D424 /* WCXmppTool.m */; };
 		CE614AE21B821D080063D424 /* WCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614AE11B821D080063D424 /* WCNavigationController.m */; };
 		CE614AEC1B8222030063D424 /* WCMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE614AEB1B8222030063D424 /* WCMeViewController.m */; };
@@ -402,6 +412,23 @@
 		CE2D967B1B933D8E007DDF37 /* WCWeChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCWeChatController.m; sourceTree = "<group>"; };
 		CE3B7C6A1B8C9E260056DA5B /* WCAddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAddFriendController.h; sourceTree = "<group>"; };
 		CE3B7C6B1B8C9E260056DA5B /* WCAddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAddFriendController.m; sourceTree = "<group>"; };
+		CE5C540A1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XHButtonTitlePosition.h"; sourceTree = "<group>"; };
+		CE5C540B1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XHButtonTitlePosition.m"; sourceTree = "<group>"; };
+		CE5C540D1B948F4D001F50B1 /* shake_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_match.wav; path = Images.xcassets/DisconverImages/ShakeImages/shake_match.wav; sourceTree = "<group>"; };
+		CE5C540E1B948F4D001F50B1 /* shake_nomatch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_nomatch.wav; path = Images.xcassets/DisconverImages/ShakeImages/shake_nomatch.wav; sourceTree = "<group>"; };
+		CE5C540F1B948F4D001F50B1 /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shake_sound_male.wav; path = Images.xcassets/DisconverImages/ShakeImages/shake_sound_male.wav; sourceTree = "<group>"; };
+		CE5C54221B949201001F50B1 /* WCDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCDiscoverController.h; sourceTree = "<group>"; };
+		CE5C54231B949201001F50B1 /* WCDiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCDiscoverController.m; sourceTree = "<group>"; };
+		CE5C54241B949201001F50B1 /* WCQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCQRCodeViewController.h; sourceTree = "<group>"; };
+		CE5C54251B949201001F50B1 /* WCQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCQRCodeViewController.m; sourceTree = "<group>"; };
+		CE5C542C1B949302001F50B1 /* WCShakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCShakeViewController.h; sourceTree = "<group>"; };
+		CE5C542D1B949302001F50B1 /* WCShakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCShakeViewController.m; sourceTree = "<group>"; };
+		CE5C54301B94932A001F50B1 /* XHScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHScanningView.h; sourceTree = "<group>"; };
+		CE5C54311B94932A001F50B1 /* XHScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHScanningView.m; sourceTree = "<group>"; };
+		CE5C54331B94934A001F50B1 /* XHFoundationCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFoundationCommon.h; sourceTree = "<group>"; };
+		CE5C54341B94934A001F50B1 /* XHFoundationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFoundationCommon.m; sourceTree = "<group>"; };
+		CE5C54361B949558001F50B1 /* WCBottleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCBottleViewController.h; sourceTree = "<group>"; };
+		CE5C54371B949558001F50B1 /* WCBottleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCBottleViewController.m; sourceTree = "<group>"; };
 		CE614ADD1B82074B0063D424 /* WCXmppTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCXmppTool.h; sourceTree = "<group>"; };
 		CE614ADE1B82074B0063D424 /* WCXmppTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCXmppTool.m; sourceTree = "<group>"; };
 		CE614AE01B821D080063D424 /* WCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCNavigationController.h; sourceTree = "<group>"; };
@@ -1099,6 +1126,57 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CE5C541F1B949201001F50B1 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C54201B949201001F50B1 /* Common */,
+				CE5C54211B949201001F50B1 /* Controller */,
+				CE5C54281B949201001F50B1 /* View */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		CE5C54201B949201001F50B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C54331B94934A001F50B1 /* XHFoundationCommon.h */,
+				CE5C54341B94934A001F50B1 /* XHFoundationCommon.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CE5C54211B949201001F50B1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C542C1B949302001F50B1 /* WCShakeViewController.h */,
+				CE5C542D1B949302001F50B1 /* WCShakeViewController.m */,
+				CE5C54221B949201001F50B1 /* WCDiscoverController.h */,
+				CE5C54231B949201001F50B1 /* WCDiscoverController.m */,
+				CE5C54241B949201001F50B1 /* WCQRCodeViewController.h */,
+				CE5C54251B949201001F50B1 /* WCQRCodeViewController.m */,
+				CE5C54361B949558001F50B1 /* WCBottleViewController.h */,
+				CE5C54371B949558001F50B1 /* WCBottleViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE5C54281B949201001F50B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C542F1B94932A001F50B1 /* ScanningView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE5C542F1B94932A001F50B1 /* ScanningView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C54301B94932A001F50B1 /* XHScanningView.h */,
+				CE5C54311B94932A001F50B1 /* XHScanningView.m */,
+			);
+			path = ScanningView;
+			sourceTree = "<group>";
+		};
 		CE614ADC1B82071D0063D424 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,6 +1260,9 @@
 		CE680D531B806D43001EFB8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C540D1B948F4D001F50B1 /* shake_match.wav */,
+				CE5C540E1B948F4D001F50B1 /* shake_nomatch.wav */,
+				CE5C540F1B948F4D001F50B1 /* shake_sound_male.wav */,
 				CE680D601B806D43001EFB8E /* Images.xcassets */,
 				CE680D541B806D43001EFB8E /* Info.plist */,
 				CE680D551B806D43001EFB8E /* main.m */,
@@ -1212,6 +1293,7 @@
 		CE680D791B806DAD001EFB8E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C541F1B949201001F50B1 /* Discover */,
 				CE2D96781B933D3F007DDF37 /* WeChat */,
 				CE7743761B8B61D600A6EAD4 /* AddressBook */,
 				CE614AE61B8221DB0063D424 /* Me */,
@@ -2202,6 +2284,8 @@
 		CE6810F91B8073CC001EFB8E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C540A1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.h */,
+				CE5C540B1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.m */,
 				CE68111B1B808FE2001EFB8E /* MBProgressHUD+MJ.h */,
 				CE68111C1B808FE2001EFB8E /* MBProgressHUD+MJ.m */,
 				CE6810FA1B8073EC001EFB8E /* Foundation+Log.m */,
@@ -2988,6 +3072,7 @@
 				CEFBF3831B8E17B2006101B3 /* MoreFunctionFrame@2x.png in Resources */,
 				CEFBF39D1B8E17B2006101B3 /* section0_emotion10@2x.png in Resources */,
 				CEFBF3891B8E17B2006101B3 /* MultiSelectedPanelConfirmBtnbKG@2x.png in Resources */,
+				CE5C54101B948F4D001F50B1 /* shake_match.wav in Resources */,
 				CEFBF3821B8E17B2006101B3 /* MessageVideoPlay@2x.png in Resources */,
 				CEFBF3781B8E17B2006101B3 /* face_HL@2x.png in Resources */,
 				CE614AF01B822BD50063D424 /* Home.storyboard in Resources */,
@@ -3011,6 +3096,7 @@
 				CEFBF3701B8E17B2006101B3 /* contacts_add_friend@2x.png in Resources */,
 				CEFBF37F1B8E17B2006101B3 /* input-field-cover@2x.png in Resources */,
 				CEFBF3B61B8E17B2006101B3 /* sharemore_video@2x.png in Resources */,
+				CE5C54121B948F4D001F50B1 /* shake_sound_male.wav in Resources */,
 				CE680DC71B80706C001EFB8E /* build-libidn.sh in Resources */,
 				CEFBF3911B8E17B2006101B3 /* RecordingBkg@2x.png in Resources */,
 				CEFBF37C1B8E17B2006101B3 /* input-bar-flat.png in Resources */,
@@ -3024,6 +3110,7 @@
 				CEFBF38E1B8E17B2006101B3 /* ReceiverVoiceNodePlaying003@2x.png in Resources */,
 				CEFBF3811B8E17B2006101B3 /* keyboard_HL@2x.png in Resources */,
 				CEFBF36E1B8E17B2006101B3 /* CellNotSelected@2x.png in Resources */,
+				CE5C54111B948F4D001F50B1 /* shake_nomatch.wav in Resources */,
 				CEFBF3A61B8E17B2006101B3 /* section0_emotion4@2x.png in Resources */,
 				CEFBF3721B8E17B2006101B3 /* contacts_add_photo@2x.png in Resources */,
 				CEFBF3761B8E17B2006101B3 /* MessageDisplayKitString.strings in Resources */,
@@ -3093,12 +3180,14 @@
 				CEFBF3671B8E17B2006101B3 /* MultiSelectViewController.m in Sources */,
 				CE68109A1B80726A001EFB8E /* XMPPProcessOne.m in Sources */,
 				CE680DC11B80706C001EFB8E /* DDMultiFormatter.m in Sources */,
+				CE5C54291B949201001F50B1 /* WCDiscoverController.m in Sources */,
 				CE6810C21B80726A001EFB8E /* XMPPvCardTempBase.m in Sources */,
 				CE6810BD1B80726A001EFB8E /* XMPPvCardCoreDataStorageObject.m in Sources */,
 				CEAFCAA71B83661900F52ABF /* WCUserInfo.m in Sources */,
 				CE6810A41B80726A001EFB8E /* XMPPRoster.m in Sources */,
 				CE6810D01B80726A001EFB8E /* XMPPDateTimeProfiles.m in Sources */,
 				CEFBF34A1B8E17B2006101B3 /* SETextLayout.m in Sources */,
+				CE5C540C1B948D31001F50B1 /* UIButton+XHButtonTitlePosition.m in Sources */,
 				CEFBF3CA1B8E17B2006101B3 /* XHRefreshCircleView.m in Sources */,
 				CE680DB91B80706C001EFB8E /* GCDAsyncSocket.m in Sources */,
 				CE6810F31B80726A001EFB8E /* NSXMLElement+XEP_0297.m in Sources */,
@@ -3141,6 +3230,7 @@
 				CE6810A71B80726A001EFB8E /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				CE680D561B806D43001EFB8E /* main.m in Sources */,
 				CE614AEC1B8222030063D424 /* WCMeViewController.m in Sources */,
+				CE5C54351B94934A001F50B1 /* XHFoundationCommon.m in Sources */,
 				CE680E181B8071DA001EFB8E /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				CE680E161B8071DA001EFB8E /* XMPPPlainAuthentication.m in Sources */,
 				CE6810BF1B80726A001EFB8E /* XMPPvCardTemp.m in Sources */,
@@ -3154,12 +3244,14 @@
 				CE6810C31B80726A001EFB8E /* XMPPvCardTempEmail.m in Sources */,
 				CE6810CC1B80726A001EFB8E /* XMPPIQ+XEP_0066.m in Sources */,
 				CE6810A11B80726A001EFB8E /* XMPPResourceMemoryStorageObject.m in Sources */,
+				CE5C54381B949558001F50B1 /* WCBottleViewController.m in Sources */,
 				CE6810981B80726A001EFB8E /* XMPPOutgoingFileTransfer.m in Sources */,
 				CE6810AE1B80726A001EFB8E /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				CEAFCAB31B837F8600F52ABF /* WCRegisterViewController.m in Sources */,
 				CEFBF33C1B8E17B2006101B3 /* XHMessage.m in Sources */,
 				CE680E1D1B8071DA001EFB8E /* XMPPConstants.m in Sources */,
 				CE6810F11B80726A001EFB8E /* XMPPMessage+XEP_0280.m in Sources */,
+				CE5C542E1B949302001F50B1 /* WCShakeViewController.m in Sources */,
 				CE680DC01B80706C001EFB8E /* DDDispatchQueueLogFormatter.m in Sources */,
 				CE0974141B91FFCD0021A3BA /* WCFriendCell.m in Sources */,
 				CE6810B51B80726A001EFB8E /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
@@ -3199,6 +3291,7 @@
 				CE1B404B1B8F548000CFE071 /* WCChatUserInfo.m in Sources */,
 				CE680DBE1B80706C001EFB8E /* DDTTYLogger.m in Sources */,
 				CE680E141B8071DA001EFB8E /* XMPPDeprecatedPlainAuthentication.m in Sources */,
+				CE5C54321B94932A001F50B1 /* XHScanningView.m in Sources */,
 				CEFBF32F1B8E17B2006101B3 /* XHMessageTableViewController.m in Sources */,
 				CEFBF3431B8E17B2006101B3 /* SELineLayout.m in Sources */,
 				CE6810C51B80726A001EFB8E /* XMPPvCardTempModule.m in Sources */,
@@ -3306,6 +3399,7 @@
 				CE1B404E1B8F56B500CFE071 /* Message.m in Sources */,
 				CE84584D1B8F37E60098CCD8 /* WCMessageViewController.m in Sources */,
 				CE6810C01B80726A001EFB8E /* XMPPvCardTempAdr.m in Sources */,
+				CE5C542A1B949201001F50B1 /* WCQRCodeViewController.m in Sources */,
 				CE680E1A1B8071DA001EFB8E /* NSData+XMPP.m in Sources */,
 				CE6810961B80726A001EFB8E /* XMPPFileTransfer.m in Sources */,
 				CE680D7E1B806E35001EFB8E /* AppDelegate.m in Sources */,

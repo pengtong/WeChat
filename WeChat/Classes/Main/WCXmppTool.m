@@ -285,23 +285,4 @@ static WCXmppTool *_xmppTool;
         [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
     }
 }
-
-//- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
-//{
-//    if([UIApplication sharedApplication].applicationState != UIApplicationStateActive)
-//    {
-//        UILocalNotification *localNoti = [[UILocalNotification alloc] init];
-//        
-//        localNoti.alertBody = [NSString stringWithFormat:@"%@\n%@",message.fromStr,message.body];
-//        
-//        localNoti.fireDate = [NSDate date];
-//        
-//        localNoti.soundName = @"default";
-//        
-//        [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
-//        
-//        //{"aps":{'alert':"zhangsan\n have dinner":'sound':'default',badge:'12'}}
-//    }
-//}
-
 @end

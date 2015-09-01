@@ -272,6 +272,8 @@ static WCXmppTool *_xmppTool;
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
+    if (message.body.length == 0) return;
+    
     NSInteger count = [[UIApplication sharedApplication] applicationIconBadgeNumber];
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive)
     {

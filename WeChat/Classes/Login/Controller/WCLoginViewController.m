@@ -31,7 +31,11 @@
     [self.loginBtn setBackgroundImage:[UIImage imageWithName:@"fts_green_btn"] forState:UIControlStateNormal];
     [self.loginBtn setBackgroundImage:[UIImage imageWithName:@"fts_green_btn_HL"] forState:UIControlStateHighlighted];
     self.loginBtn.enabled = (self.userLabel.text.length && self.pwdField.text.length);
-    self.headView.image = [UIImage imageWithData:[WCUserInfo sharedUserInfo].imageData];
+    
+    if ([WCUserInfo sharedUserInfo].imageData)
+    {
+        self.headView.image = [UIImage imageWithData:[WCUserInfo sharedUserInfo].imageData];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.pwdField];
 }
